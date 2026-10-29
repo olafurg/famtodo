@@ -1,0 +1,26 @@
+{
+  "name": "famtodo",
+  "version": "1.0.0",
+  "description": "Fam Todo: one shared family todo list",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "invite": "node server.js invite",
+    "icons": "node scripts/icons.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olafurg/famtodo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/olafurg/famtodo/issues"
+  },
+  "homepage": "https://github.com/olafurg/famtodo#readme",
+  "dependencies": {
+    "web-push": "^3.6.7"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "private": true
+}

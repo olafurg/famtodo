@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="is">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2f6f4f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Fam Todo">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+  <link rel="icon" href="/icon-192.png">
+  <title>Fam Todo</title>
+  <script>
+    // Manifest carries the device key so an installed Home Screen app is already "logged in".
+    (function () {
+      var k = new URLSearchParams(location.search).get('k');
+      try { if (k) localStorage.setItem('k', k); else k = localStorage.getItem('k'); } catch (e) {}
+      var l = document.createElement('link');
+      l.rel = 'manifest';
+      l.href = '/manifest.webmanifest' + (k ? '?k=' + encodeURIComponent(k) : '');
+      document.head.appendChild(l);
+    })();
+  </script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>Fam Todo</h1>
+    <span id="status" hidden>Ótengt</span>
+    <button id="bell" class="icon" title="Tilkynningar" aria-label="Tilkynningar">🔕</button>
+  </header>
+
+  <main id="app" hidden>
+    <form id="add" autocomplete="off">
+      <input id="text" placeholder="Bæta við…" enterkeyhint="done" maxlength="500">
+      <button type="submit">Bæta við</button>
+    </form>
+    <ul id="active"></ul>
+    <p id="empty" hidden>Ekkert á listanum 🎉</p>
+    <h2 id="doneTitle" hidden>Lokið</h2>
+    <ul id="done"></ul>
+  </main>
+
+  <main id="nokey" hidden>
+    <p>Þetta tæki vantar boðshlekk.</p>
+    <p>Biddu um hlekk og opnaðu hann einu sinni á þessu tæki.</p>
+  </main>
+
+  <p id="hint" hidden>Til að fá tilkynningar: ýttu á <b>Deila</b> → <b>Bæta á heimaskjá</b> og opnaðu appið þaðan.</p>
+
+  <script src="/app.js"></script>
+</body>
+</html>
